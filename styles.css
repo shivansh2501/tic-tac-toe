@@ -34,6 +34,7 @@ nav ul {
     grid-template-columns: repeat(3, 10vw);
     grid-template-rows: repeat(3, 10vw);
     font-family: 'Roboto' sans-serif;
+    position: relative;
 }
 
 .box {
@@ -103,8 +104,10 @@ nav ul {
 }
 
 .line {
-    background-color: black;
-    height: 100%;
-    width: 30vw;
+    background-color: rgb(94, 12, 226);
+    width: 20vw;
+    height: 10px;
     position: absolute;
+    display: none;
+    transition: width 1s ease-in-out;
 }

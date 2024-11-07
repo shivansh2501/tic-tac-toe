@@ -15,7 +15,7 @@ const changeTurn = () => {
     return turnSym === "X" ? "0" : "X";
 };
 
-
+// To Reset
 let btn = document.querySelector("#reset");
 
 btn.addEventListener("click", () => {
@@ -27,6 +27,9 @@ btn.addEventListener("click", () => {
     let info = document.querySelector(".info");
     info.innerText = "Start with X";
     document.querySelector("img").style.width = "0px";
+    turnSym = "X";
+    document.querySelector(".line").style.display = `none`;
+    document.querySelector(".line").style.transform = ``;
 });
 
 //Function to check for a win
@@ -34,15 +37,16 @@ const checkWin = () => {
 
     let boxtext = document.querySelectorAll(".boxtext");
 
+    //First three elements are grid numbers, the rest represent the rotation values
     let wins = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
+        [0, 1, 2, 5, 5, 0],
+        [3, 4, 5, 5, 15, 0],
+        [6, 7, 8, 5, 25, 0],
+        [0, 3, 6, 5, 5, 90],
+        [1, 4, 7, 5, 15, 90],
+        [2, 5, 8, 5, 25, 90],
+        [0, 4, 8, 5, 15, 45],
+        [2, 4, 6, 5, 15, 135]
     ];
 
     wins.forEach((e) => {
@@ -51,6 +55,8 @@ const checkWin = () => {
             gameover = true;
             if(gameover === true) {
                 document.querySelector("img").style.width = "200px";
+                document.querySelector(".line").style.display = `inline`;
+                document.querySelector(".line").style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`;
             }
         }
     })
